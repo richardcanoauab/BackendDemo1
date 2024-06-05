@@ -19,5 +19,25 @@ namespace BackendDemo1.Controllers
                 throw;
             }
         }
+
+        [HttpGet]
+        [Route("Test")]
+        public IActionResult TestMessage()
+        {
+            try
+            {
+                Dictionary<string, string> dicRes = 
+                    new Dictionary<string, string>();
+                dicRes.Add("Mensaje", "Hola Mundo desde mi API");
+
+                return StatusCode(200, dicRes);
+            }
+            catch (Exception err)
+            {
+                return StatusCode(500, err.Message);
+            }
+        }
     }
+
+
 }
